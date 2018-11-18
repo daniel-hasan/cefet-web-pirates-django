@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <h1>Gerenciador de Tesouros </h1>
+  <section id="tesouros">
+    <table>
+      <caption>Estes são os tesouros acumulados do Barba-Ruiva em suas aventuras</caption>
+      <thead>
+        <tr>
+          <th>Tesouro</th>
+          <th>Nome</th>
+          <th>Valor unitário</th>
+          <th>Quantidade</th>
+          <th>Valor total</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for tesouro in lista_tesouros %}
+        <tr>
+          <td><img src="{{ tesouro.img_tesouro.url }}"></td>
+          <td>{{ tesouro.nome }}</td>
+          <td>{{ tesouro.valor }}</td>
+          <td>{{ tesouro.quantidade }}</td>
+          <td>{{ tesouro.valor_total }}</td>
+          <td><a href="{% url "editar" tesouro.id %}"><img src="{% static 'imgs/edit.png' %}" alt="Editar"></a></td>
+          <td><a href="{% url "excluir" tesouro.id %}"><img src="{% static 'imgs/delete.svg' %}" alt="Deletar"></a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">Total geral</td>
+          <td> {{ total_geral }}</td>
+          <td colspan="2"></td>
+        </tr>
+      </tfoot>
+    </table>
+    <a href="{% url "inserir" %}" class="add">+</a>
+  </section>
+  <p>Yarr Harr, marujo! Aqui é o temido Barba-Ruiva e você deve me ajudar
+      a contabilizar os espólios das minhas aventuras!</p>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+  <h1>Salvar Tesouro </h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ tesouroForm }}
+    <button>Enviar</button>
+  </form>
+
+{% endblock %}
