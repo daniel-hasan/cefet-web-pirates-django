@@ -9,7 +9,7 @@ from .models import Tesouro
 # Create your views here.
 class ListarTesouros(View):
     def get(self,request):
-        lst_tesouros = Tesouro.objects.annotate(valor_total=ExpressionWrapper(F('valor')*F('preco'),\
+        lst_tesouros = Tesouro.objects.annotate(valor_total=ExpressionWrapper(F('quantidade')*F('preco'),\
                             output_field=DecimalField(max_digits=10,\
                                                     decimal_places=2,\
                                                      blank=True)\
