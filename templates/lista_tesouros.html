@@ -17,22 +17,20 @@
         </tr>
       </thead>
       <tbody>
-        {% for tesouro in lista_tesouros %}
         <tr>
-          <td><img src="{{ tesouro.img_tesouro.url }}"></td>
-          <td>{{ tesouro.nome }}</td>
-          <td>{{ tesouro.preco }}</td>
-          <td>{{ tesouro.quantidade }}</td>
-          <td>{{ tesouro.valor_total }}</td>
-          <td><a href="{% url "editar" tesouro.id %}"><img src="{% static 'imgs/edit.png' %}" alt="Editar"></a></td>
-          <td><a href="{% url "excluir" tesouro.id %}"><img src="{% static 'imgs/delete.svg' %}" alt="Deletar"></a></td>
+          <td><img src="{% static "imgs/exemplo-de-icone.png" %}"></td>
+          <td>Tesouro de exemplo</td>
+          <td>200</td>
+          <td>5</td>
+          <td>1.000</td>
+          <td><img src="" alt="editar"></td>
+          <td><img src="" alt="Deletar"></td>
         </tr>
-        {% endfor %}
       </tbody>
       <tfoot>
         <tr>
           <td colspan="4">Total geral</td>
-          <td> {{ total_geral }}</td>
+          <td><!--Insira aqui o total geral-->  </td>
           <td colspan="2"></td>
         </tr>
       </tfoot>
