@@ -1,0 +1,2 @@
+# cefet-web-pirates-django
+
