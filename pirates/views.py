@@ -9,7 +9,7 @@ from .models import Tesouro
 # Create your views here.
 class ListarTesouros(View):
     def get(self,request):
-        lst_tesouros = Tesouro.objects.annotate(valor_total=ExpressionWrapper(F('valor')*F('quantidade'),\
+        lst_tesouros = Tesouro.objects.annotate(valor_total=ExpressionWrapper(F('valor')*F('preco'),\
                             output_field=DecimalField(max_digits=10,\
                                                     decimal_places=2,\
                                                      blank=True)\
@@ -23,17 +23,20 @@ class ListarTesouros(View):
 class TesouroForm(ModelForm):
     class Meta:
         model = Tesouro
-        fields = ['nome', 'quantidade', 'valor', 'img_tesouro']
+        fields = ['nome', 'quantidade', 'preco', 'img_tesouro']
+        labels = {
+            "img_tesouro": "Imagem"
+        }
 
 class SalvarTesouro(View):
     def get_tesouro(self,id):
         if id:
-            return Tesouro.objects.get(id=self.kwargs['id'])
+            return Tesouro.objects.get(id=id)
         return None
 
     def get(self,request,id=None):
-        tesouro = self.get_tesouro(id)
         return render(request,"salvar_tesouro.html",{"tesouroForm":TesouroForm(instance=self.get_tesouro(id))})
+
     def post(self,request,id=None):
         form = TesouroForm(request.POST,request.FILES, instance=self.get_tesouro(id))
 
