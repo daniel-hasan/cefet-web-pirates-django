@@ -18,7 +18,7 @@ Logo após, para que possamos acessar as URLs de media, adicione `static(setting
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+```
 ## Exercício 2 - Listar Tesouros 
 
 
